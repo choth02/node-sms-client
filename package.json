@@ -1,0 +1,37 @@
+﻿{
+	"name": "sms-client",
+	"version": "0.0.1",
+	"description": "Demonstrate usage of node-sms with an sms client.",
+	"homepage": "http://github.com/marcusbaer/node-sms-client",
+    "keywords": ["sms", "text messages", "text", "messages", "short message service", "service", "client"],
+	"author": "Marcus Baer <info@baer-media.com>",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/marcusbaer/node-sms-client.git"
+	},
+	"bugs": {
+		"url": "https://github.com/marcusbaer/node-sms-client/issues"
+	},
+	"licenses" : [
+        {
+            "type": "MIT",
+            "url": "http://github.com/marcusbaer/node-sms-client/blob/master/LICENSE"
+        }
+    ],
+	"engines" : {
+		"node": ">=0.10",
+		"npm": ">=1.2.14"
+	},
+	"dependencies": {
+		"express": "~3.1.0",
+		"jade": "~0.28.2",
+		"optimist": "~0.3.5",
+		"journey": "~0.4.0",
+		"dirty": "~0.9.7",
+		"underscore": ">=1.4.4",
+		"backbone": ">=1.0.0",
+		"socket.io": ">=0.9.14",
+		"sms": "~0.0.2"
+	},
+	"main": "./server.js"
+}
