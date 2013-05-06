@@ -1,11 +1,27 @@
 ﻿var argv = require('optimist').argv,
     sys = require('util'),
-    MessagesService = require("./messages.service");
+    Models = require("./models"),
+    sms = require("sms"),
+    _ = require('underscore')._,
+    Backbone = require('backbone');
+
+if (argv.pin) {
+    sms.pin(argv.pin);
+}
+
+var Msgs = Models.Messages.extend({
+
+    get: function() {
+        sys.log("get messages");
+        return {test: "foo"};
+    }
+
+});
 
 var Service = function () {
 
     this.options = null;
-    this.messages = MessagesService;
+    this.messages = new Msgs();
 
     this.init = function () {
         sys.log("Service is here to do something..");
@@ -25,11 +41,17 @@ var Service = function () {
         this.ds = ds;
     };
 
-    this.getMessages = function () {
-        return {test: "foo"};
-    };
-
     this.sendSms = function (input, callback) {
+        sms.send({
+            to: input.to,          // Recipient Phone Number
+            text: input.message    // Text to send
+        }, function(err, result) {
+            // error message in String and result information in JSON
+            if (err) {
+                console.log(err);
+            }
+            console.log(result);
+        });
     };
 
     // service methods

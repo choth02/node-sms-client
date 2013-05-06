@@ -6,20 +6,43 @@
 
     var Models = {};
 
-    var Foo = Models.Foo = Backbone.Model.extend({
+    var Label = Models.Label = Backbone.Model.extend({
         defaults: {
-            name: '<unknown>',
-            id: null
+            id: null,
+            name: null
         }
     });
 
-    Models.FooList = Backbone.Collection.extend({
-        model: Foo,
+    var Labels = Models.Labels = Backbone.Collection.extend({
+        model: Label,
         getList: function (id) {
             return this.toJSON();
         },
-        addFoo: function (attrs) {
-            this.push(new Foo(attrs));
+        addLabel: function (attrs) {
+            this.push(new Label(attrs));
+        }
+    });
+
+    var Message = Models.Message = Backbone.Model.extend({
+        defaults: {
+            id: null,
+            name: null,
+            to: null,
+            from: null,
+            time: null,
+            text: '',
+            labels: new Labels()
+        }
+    });
+
+    var Messages = Models.Messages = Backbone.Collection.extend({
+        model: Message,
+        url: 'service/messages/getMessages',
+        getList: function (id) {
+            return this.toJSON();
+        },
+        addMessage: function (attrs) {
+            this.push(new Message(attrs));
         }
     });
 

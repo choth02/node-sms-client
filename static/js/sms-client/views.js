@@ -7,11 +7,11 @@
     var Views = {};
 
 
-    var ItemBase = Backbone.View.extend({
+    var MessageBase = Backbone.View.extend({
 
         tagName: "div",
 
-        className: "foolist-item-",
+        className: "message-",
         template: _.template('<p><%=name%></p>'),
 
         events: {
@@ -30,26 +30,26 @@
         }
     });
 
-    Views.SmallItem = ItemBase.extend({
-        className: "foolist-item-small",
+    Views.SmallMessage = MessageBase.extend({
+        className: "message-small",
         template: _.template('<p><%=name%></p>')
     });
 
-    Views.MiddleItem = ItemBase.extend({
-        className: "foolist-item-middle",
+    Views.MiddleMessage = MessageBase.extend({
+        className: "message-middle",
         template: _.template('<p><%=name%></p>')
     });
 
-    Views.LargeItem = ItemBase.extend({
-        className: "foolist-item-large",
+    Views.LargeMessage = MessageBase.extend({
+        className: "message-large",
         template: _.template('<p><%=name%></p>')
     });
 
-    var ItemsBase = Backbone.View.extend({
+    var MessagesBase = Backbone.View.extend({
 
         tagName: "div",
 
-        className: "foolist-items-",
+        className: "messages-",
         template: _.template(''),
         itemViews: {},
         itemView: Views.SmallItem,
@@ -75,22 +75,22 @@
         }
     });
 
-    Views.SmallListItems = ItemsBase.extend({
-        className: "foolist-items-small",
-        itemView: Views.SmallItem,
-        template: _.template('<h3>SMALL Items</h3>')
+    Views.SmallListMessages = MessagesBase.extend({
+        className: "messages-small",
+        itemView: Views.SmallMessage,
+        template: _.template('<h3>SMALL Messages</h3>')
     });
 
-    Views.MiddleListItems = ItemsBase.extend({
-        className: "foolist-items-middle",
-        itemView: Views.MiddleItem,
-        template: _.template('<h3>MIDDLE Items</h3>')
+    Views.MiddleListMessages = MessagesBase.extend({
+        className: "messages-middle",
+        itemView: Views.MiddleMessage,
+        template: _.template('<h3>MIDDLE Messages</h3>')
     });
 
-    Views.LargeListItems = ItemsBase.extend({
-        className: "foolist-items-large",
-        itemView: Views.LargeItem,
-        template: _.template('<h3>LARGE Items</h3>')
+    Views.LargeListMessages = MessagesBase.extend({
+        className: "messages-large",
+        itemView: Views.LargeMessage,
+        template: _.template('<h3>LARGE Messages</h3>')
     });
 
     return Views;

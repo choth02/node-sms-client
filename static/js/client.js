@@ -30,8 +30,8 @@
         'underscore',
         'backbone',
         'jquery',
-        'doxybox/models',
-        'doxybox/views',
+        'sms-client/models',
+        'sms-client/views',
         'socketio'
     ], function(
         _,
@@ -40,10 +40,10 @@
         Models,
         Views
         ) {
-        var Doxybox;
-        return Doxybox = (function() {
+        var SmsClient, messages;
+        return SmsClient = (function() {
 
-            function Doxybox() {}
+            function SmsClient() {}
             var AppRouter = Backbone.Router.extend({
 
                 routes: {
@@ -64,10 +64,15 @@
                         });
                     });
 
+                    messages = new Models.Messages();
+                    messages.fetch();
+//                    console.log(messages);
+
                 },
 
                 start: function() {
 					// more code here in our starting route ...
+
                 }
 
             });
@@ -75,11 +80,11 @@
             var app_router = new AppRouter;
             Backbone.history.start();
 
-            Doxybox.prototype.say = function() {
+            SmsClient.prototype.say = function() {
                 return console.log("say");
             };
 
-            return Doxybox;
+            return SmsClient;
 
         })();
     });
